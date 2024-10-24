@@ -26,4 +26,13 @@ describe("QueryProcessor", () => {
             "YOUR ANDREW ID SHOULD BE HERE"
           ));
     });
+
+    // TODO: You should update the test below after you add your andrew id
+    test('should return my andrew id', () => {
+        const query = "what's your name?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe((
+            "hello there"
+            ));
+    });
 });
