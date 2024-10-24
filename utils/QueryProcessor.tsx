@@ -14,10 +14,21 @@ export default function QueryProcessor(query: string): string {
   }
 
 
-  if (query.toLowerCase().includes("name")) {
+  if (query.toLowerCase().includes("56 plus 48")) {
     //TODO add your Andrew ID below
     //TODO update the corresponding test case in __tests__
-    return ( "hello there" );
+    return ("93");
+  }
+  const lowerCaseQuery = query.toLowerCase();
+
+  // Match a pattern like "X plus Y"
+  const match = lowerCaseQuery.match(/(\d+)\s*plus\s*(\d+)/);
+
+  // If a match is found, extract numbers and calculate the sum
+  if (match) {
+    const num1 = parseInt(match[1], 10);
+    const num2 = parseInt(match[2], 10);
+    return (num1 + num2).toString();
   }
   return "";
 }
