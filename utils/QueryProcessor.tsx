@@ -21,7 +21,7 @@ export default function QueryProcessor(query: string): string {
   }
   const lowerCaseQuery = query.toLowerCase();
 
-  const match_p = lowerCaseQuery.match(/(\d+)\s*plus\s*(\d+)/);
+  const match_p = query.match(/(\d+)\s*plus\s*(\d+)/);
 
   const match_l = query.match(/Which of the following numbers is the largest:\s*(\d+),\s*(\d+),\s*(\d+)/);
 
@@ -50,6 +50,6 @@ export default function QueryProcessor(query: string): string {
 
     return sixthPowers.join(', ');
   }
-  
+
   return "";
 }
