@@ -66,5 +66,13 @@ export default function QueryProcessor(query: string): string {
     return primes.join(', ');
   }
 
+  const minusMatch = query.match(/What is (\d+)\s*minus\s*(\d+)\?/);
+
+  if (minusMatch) {
+    const num1 = parseInt(minusMatch[1], 10);
+    const num2 = parseInt(minusMatch[2], 10);
+    return (num1 - num2).toString();
+  }
+
   return "";
 }
