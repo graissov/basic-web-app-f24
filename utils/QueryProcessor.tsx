@@ -23,7 +23,7 @@ export default function QueryProcessor(query: string): string {
 
   const match_p = lowerCaseQuery.match(/(\d+)\s*plus\s*(\d+)/);
 
-  const match_l = lowerCaseQuery.match(/which of the following numbers is the largest:\s*(\d+),\s*(\d+),\s*(\d+)/);
+  const match_l = query.match(/Which of the following numbers is the largest:\s*(\d+),\s*(\d+),\s*(\d+)/);
 
   if (match_p) {
     const num1 = parseInt(match_p[1], 10);
