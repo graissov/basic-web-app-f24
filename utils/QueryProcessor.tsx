@@ -37,5 +37,19 @@ export default function QueryProcessor(query: string): string {
     const num3 = parseInt(match_l[3], 10);
     return Math.max(num1, num2, num3).toString();
   }
+
+  const sixthPowerMatch = query.match(/Which of the following numbers is both a square and a cube:\s*([\d, ]+)/);
+
+  if (sixthPowerMatch) {
+    const numbers = sixthPowerMatch[1].split(',').map(num => parseInt(num.trim(), 10));
+
+    const sixthPowers = numbers.filter(num => {
+      const root = Math.round(Math.pow(num, 1/6));
+      return Math.pow(root, 6) === num;
+    });
+
+    return sixthPowers.join(', ');
+  }
+  
   return "";
 }
