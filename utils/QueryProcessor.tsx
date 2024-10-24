@@ -38,10 +38,10 @@ export default function QueryProcessor(query: string): string {
     return Math.max(num1, num2, num3).toString();
   }
 
-  const sixthPowerMatch = query.match(/Which of the following numbers is both a square and a cube:\s*([\d, ]+)/);
+  const sixthm_p = query.match(/Which of the following numbers is both a square and a cube:\s*([\d, ]+)/);
 
-  if (sixthPowerMatch) {
-    const numbers = sixthPowerMatch[1].split(',').map(num => parseInt(num.trim(), 10));
+  if (sixthm_p) {
+    const numbers = sixthm_p[1].split(',').map(num => parseInt(num.trim(), 10));
 
     const sixthPowers = numbers.filter(num => {
       const root = Math.round(Math.pow(num, 1/6));
@@ -50,10 +50,10 @@ export default function QueryProcessor(query: string): string {
 
     return sixthPowers.join(', ');
   }
-  const primeMatch = query.match(/Which of the following numbers are primes:\s*([\d, ]+)/);
+  const pr_m = query.match(/Which of the following numbers are primes:\s*([\d, ]+)/);
 
-  if (primeMatch) {
-    const numbers = primeMatch[1].split(',').map(num => parseInt(num.trim(), 10));
+  if (pr_m) {
+    const numbers = pr_m[1].split(',').map(num => parseInt(num.trim(), 10));
 
     const primes = numbers.filter(num => {
       if (num < 2) return false;
@@ -66,28 +66,28 @@ export default function QueryProcessor(query: string): string {
     return primes.join(', ');
   }
 
-  const minusMatch = query.match(/What is (\d+)\s*minus\s*(\d+)\?/);
+  const minus_m = query.match(/What is (\d+)\s*minus\s*(\d+)\?/);
 
-  if (minusMatch) {
-    const num1 = parseInt(minusMatch[1], 10);
-    const num2 = parseInt(minusMatch[2], 10);
+  if (minus_m) {
+    const num1 = parseInt(minus_m[1], 10);
+    const num2 = parseInt(minus_m[2], 10);
     return (num1 - num2).toString();
   }
-  const multiplyMatch = query.match(/What is (\d+)\s*multiplied by\s*(\d+)\?/);
+  const m_m = query.match(/What is (\d+)\s*multiplied by\s*(\d+)\?/);
 
-  if (multiplyMatch) {
-    const num1 = parseInt(multiplyMatch[1], 10);
-    const num2 = parseInt(multiplyMatch[2], 10);
+  if (m_m) {
+    const num1 = parseInt(m_m[1], 10);
+    const num2 = parseInt(m_m[2], 10);
     return (num1 * num2).toString();
   }
 
-  const powerMatch = query.match(/What is (\d+)\s*to the power of\s*(\d+)\?/);
+  const m_p = query.match(/What is (\d+)\s*to the power of\s*(\d+)\?/);
 
-  if (powerMatch) {
-    const base = parseInt(powerMatch[1], 10);
-    const exponent = parseInt(powerMatch[2], 10);
-    return Math.pow(base, exponent).toString();
+  if (m_p) {
+    const b = parseInt(m_p[1], 10);
+    const e = parseInt(m_p[2], 10);
+    return Math.pow(b, e).toString();
   }
-  
+
   return "";
 }
