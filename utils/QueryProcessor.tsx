@@ -21,14 +21,24 @@ export default function QueryProcessor(query: string): string {
   }
   const lowerCaseQuery = query.toLowerCase();
 
-  // Match a pattern like "X plus Y"
-  const match = lowerCaseQuery.match(/(\d+)\s*plus\s*(\d+)/);
+  const plusMatch = lowerCaseQuery.match(/(\d+)\s*plus\s*(\d+)/);
 
-  // If a match is found, extract numbers and calculate the sum
-  if (match) {
-    const num1 = parseInt(match[1], 10);
-    const num2 = parseInt(match[2], 10);
+  // Match a pattern like "Which of the following numbers is the largest: X, Y, Z?"
+  const largestMatch = lowerCaseQuery.match(/which of the following numbers is the largest:\s*(\d+),\s*(\d+),\s*(\d+)/);
+
+  // If "X plus Y" match is found, extract numbers and calculate the sum
+  if (plusMatch) {
+    const num1 = parseInt(plusMatch[1], 10);
+    const num2 = parseInt(plusMatch[2], 10);
     return (num1 + num2).toString();
+  }
+
+  // If "largest" match is found, extract numbers and determine the largest
+  if (largestMatch) {
+    const num1 = parseInt(largestMatch[1], 10);
+    const num2 = parseInt(largestMatch[2], 10);
+    const num3 = parseInt(largestMatch[3], 10);
+    return Math.max(num1, num2, num3).toString();
   }
   return "";
 }
