@@ -73,6 +73,13 @@ export default function QueryProcessor(query: string): string {
     const num2 = parseInt(minusMatch[2], 10);
     return (num1 - num2).toString();
   }
+  const multiplyMatch = query.match(/What is (\d+)\s*multiplied by\s*(\d+)\?/);
+
+  if (multiplyMatch) {
+    const num1 = parseInt(multiplyMatch[1], 10);
+    const num2 = parseInt(multiplyMatch[2], 10);
+    return (num1 * num2).toString();
+  }
 
   return "";
 }
