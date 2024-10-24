@@ -50,6 +50,21 @@ export default function QueryProcessor(query: string): string {
 
     return sixthPowers.join(', ');
   }
+  const primeMatch = query.match(/Which of the following numbers are primes:\s*([\d, ]+)/);
+
+  if (primeMatch) {
+    const numbers = primeMatch[1].split(',').map(num => parseInt(num.trim(), 10));
+
+    const primes = numbers.filter(num => {
+      if (num < 2) return false;
+      for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) return false;
+      }
+      return true;
+    });
+
+    return primes.join(', ');
+  }
 
   return "";
 }
