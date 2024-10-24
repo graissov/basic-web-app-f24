@@ -81,5 +81,13 @@ export default function QueryProcessor(query: string): string {
     return (num1 * num2).toString();
   }
 
+  const powerMatch = query.match(/What is (\d+)\s*to the power of\s*(\d+)\?/);
+
+  if (powerMatch) {
+    const base = parseInt(powerMatch[1], 10);
+    const exponent = parseInt(powerMatch[2], 10);
+    return Math.pow(base, exponent).toString();
+  }
+  
   return "";
 }
