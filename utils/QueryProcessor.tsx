@@ -88,6 +88,14 @@ export default function QueryProcessor(query: string): string {
     const e = parseInt(m_p[2], 10);
     return Math.pow(b, e).toString();
   }
+  const mix = query.match(/What is (\d+)\s*plus\s*(\d+)\s*multiplied by\s*(\d+)\?/);
+
+  if (mix) {
+    const num1 = parseInt(mix[1], 10);
+    const num2 = parseInt(mix[2], 10);
+    const num3 = parseInt(mix[3], 10);
+    return (num1 + (num2 * num3)).toString();
+  }
 
   return "";
 }
